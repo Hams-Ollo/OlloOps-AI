@@ -56,7 +56,7 @@ with st.sidebar:
 st.subheader("Your AI Assistant")
 
 # Display chat messages
-for message in st.session_state.messages:
+for idx, message in enumerate(st.session_state.messages):
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
         if message["role"] == "assistant":
@@ -64,11 +64,11 @@ for message in st.session_state.messages:
             with message_container:
                 col1, col2 = st.columns([0.1, 0.9])
                 with col1:
-                    if st.button("👍", key=f"like_{len(st.session_state.messages)}"):
+                    if st.button("👍", key=f"like_msg_{idx}"):
                         st.toast("Thanks for the feedback!")
                 with col2:
-                    if st.button("👎", key=f"dislike_{len(st.session_state.messages)}"):
-                        feedback = st.text_input("What could be improved?", key=f"feedback_{len(st.session_state.messages)}")
+                    if st.button("👎", key=f"dislike_msg_{idx}"):
+                        feedback = st.text_input("What could be improved?", key=f"feedback_msg_{idx}")
                         if feedback:
                             st.toast("Thanks for your feedback!")
 
@@ -96,11 +96,11 @@ if prompt := st.chat_input("What's on your mind?"):
                     with message_container:
                         col1, col2 = st.columns([0.1, 0.9])
                         with col1:
-                            if st.button("👍", key=f"like_{len(st.session_state.messages)}"):
+                            if st.button("👍", key=f"like_new_msg_{len(st.session_state.messages)}"):
                                 st.toast("Thanks for the feedback!")
                         with col2:
-                            if st.button("👎", key=f"dislike_{len(st.session_state.messages)}"):
-                                feedback = st.text_input("What could be improved?", key=f"feedback_{len(st.session_state.messages)}")
+                            if st.button("👎", key=f"dislike_new_msg_{len(st.session_state.messages)}"):
+                                feedback = st.text_input("What could be improved?", key=f"feedback_new_msg_{len(st.session_state.messages)}")
                                 if feedback:
                                     st.toast("Thanks for your feedback!")
                 else:
