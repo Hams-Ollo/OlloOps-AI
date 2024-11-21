@@ -1,95 +1,48 @@
 # Changelog
-All notable changes to the Program & Chill AI Assistant will be documented in this file.
+All notable changes to hams_ollo AI Assistant will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-## [0.4.0] - 2024-03-19
+## [0.0.3] - 2024-03-19
 ### Added
-- Integrated CrewAI framework for multi-agent orchestration
-- Added specialized agents for different tasks:
-  * Lead Conversational Assistant
-  * Scheduling Assistant
-  * Content Creation Assistant
-- Implemented conversation memory system
-- Enhanced Streamlit UI with new features:
-  * Settings sidebar with temperature and max tokens controls
-  * Chat history management
-  * Feedback system with thumbs up/down buttons
-  * User feedback collection for improvements
-- Added task delegation system based on message content
-- Implemented methods to detect and route specialized tasks
+- Implemented comprehensive RAG (Retrieval Augmented Generation) system
+  * ChromaDB vector store client for efficient document storage
+  * Document processing pipeline with support for TXT, PDF, DOCX, MD
+  * Intelligent text chunking with semantic boundaries
+  * Integrated RAG manager for document processing and querying
+- Enhanced documentation and project structure:
+  * Created detailed ROADMAP.md
+  * Added comprehensive CONTRIBUTING.md
+  * Updated development workflow documentation
+- Added new dependencies for document processing and RAG:
+  * PyPDF2 for PDF processing
+  * Enhanced ChromaDB integration
 
 ### Changed
-- Refactored ChatAgent class to support CrewAI integration
-- Enhanced message processing with conversation history
-- Improved error handling and user feedback in Streamlit interface
-- Updated UI layout for better user experience
-- Modified agent initialization to support task delegation
+- Reorganized project structure for better modularity
+- Updated version tracking in main application
+- Enhanced dependency management with categorized requirements.txt
+- Improved documentation structure and clarity
 
 ### Technical
-- Added support for maintaining conversation context
-- Implemented task-based agent delegation
-- Enhanced error handling and logging
-- Added user feedback collection mechanism
-- Improved session state management in Streamlit
+- Implemented ChromaVectorStore for document embeddings
+- Created DocumentLoader with multi-format support
+- Added TextChunker for semantic text splitting
+- Integrated RAGManager for unified knowledge management
 
-## [0.3.0] - 2024-03-19
-### Changed
-- Migrated from OpenAI to Groq for LLM functionality
-- Updated chat agent to use Mixtral-8x7b-32768 model
-- Modified API key handling to use GROQ_API_KEY
-- Removed OpenAI dependencies
-- Enhanced error handling for Groq API integration
-
+## [0.0.2] - 2024-03-19
 ### Added
-- Support for Groq's Mixtral model
-- Improved token handling with 4096 token limit
-- Better error messages for API initialization
+- Initial CrewAI integration
+- Basic agent structure setup
+- Streamlit UI foundation
+- Environment configuration
 
-### Removed
-- OpenAI integration and dependencies
-- GPT model configurations
-
-## [0.2.1] - 2024-03-19
-### Changed
-- Updated dependencies to use newer package versions
-- Migrated to langchain-specific packages (openai, huggingface, chroma)
-- Improved error handling for API quota limits
-- Enhanced logging for better debugging
-- Updated document processing validation
-
-### Fixed
-- Deprecation warnings from LangChain packages
-- OpenAI API quota handling
-- Vector store initialization issues
-- Document processing error handling
-
-## [0.2.0] - 2024-03-19
+## [0.0.1] - 2024-03-19
 ### Added
-- Enhanced Word document processing using UnstructuredWordDocumentLoader
-- Automatic creation of vector store directory
-- Source metadata tracking for uploaded documents
-- Comprehensive logging throughout document processing pipeline
-
-### Changed
-- Replaced Docx2txtLoader with more robust UnstructuredWordDocumentLoader
-- Improved error handling with detailed stack traces
-- Enhanced logging messages for better debugging
-- Added validation for vector store existence before querying
-
-### Fixed
-- Word document processing issues
-- Vector store initialization errors
-- Missing directory creation for persistence
-
-## [0.1.0] - 2024-03-19
-### Added
-- Initial release of Program & Chill AI Assistant
-- Document upload functionality with PDF, TXT, DOC, DOCX support
-- RAG integration with ChromaDB
-- Multi-agent architecture with DocumentProcessor and ChatAgent
-- Streamlit-based user interface
-- OpenAI integration for chat capabilities
+- Project initialization
+- Basic repository structure
+- Initial documentation
+- Core dependency setup
