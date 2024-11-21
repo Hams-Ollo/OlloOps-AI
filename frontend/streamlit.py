@@ -67,7 +67,7 @@ with st.sidebar:
         if st.button("Clear Chat History"):
             st.session_state.messages = []
             st.session_state.chat_agent.conversation_history = []
-            st.experimental_rerun()
+            st.rerun()
 
 # Main chat interface
 st.subheader("Your AI Assistant")
