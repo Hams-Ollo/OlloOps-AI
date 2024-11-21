@@ -1,3 +1,8 @@
+#-------------------------------------------------------------------------------------#
+# File: scheduling_agent.py
+# Description: Custom scheduling agent implementation using Groq's Mixtral model for scheduling and time management
+# Author: @hams_ollo
+#-------------------------------------------------------------------------------------#
 from crewai import Agent
 
 class SchedulingAgent:

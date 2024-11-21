@@ -1,3 +1,8 @@
+#-------------------------------------------------------------------------------------#
+# File: content_agent.py
+# Description: Custom content agent implementation using Groq's Mixtral model for conversational AI
+# Author: @hams_ollo
+#-------------------------------------------------------------------------------------#
 from crewai import Agent
 
 class ContentAgent:

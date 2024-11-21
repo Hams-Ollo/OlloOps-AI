@@ -1,3 +1,8 @@
+#-------------------------------------------------------------------------------------#
+# File: podcast_agent.py
+# Description: Custom podcast agent implementation using Groq's Mixtral model for conversational AI
+# Author: @hams_ollo
+#-------------------------------------------------------------------------------------#
 from crewai import Agent
 
 class PodcastAgent:
