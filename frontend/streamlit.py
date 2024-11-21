@@ -2,6 +2,9 @@
 # File: streamlit.py
 # Description: Streamlit-based frontend interface for the Podcast and AI Assistant application
 # Author: @hams_ollo
+# Version: 0.0.3
+# Last Updated: [2024-11-21]
+# Run: streamlit run frontend/streamlit.py
 #-------------------------------------------------------------------------------------#
 import os
 import sys
@@ -18,18 +21,32 @@ from app.agents.chat_agent import ChatAgent
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(),
+        logging.FileHandler('logs/streamlit.log')
+    ]
 )
 logger = logging.getLogger(__name__)
 
 # Load environment variables
 load_dotenv()
 
+# Create logs directory if it doesn't exist
+os.makedirs('logs', exist_ok=True)
+
 # Initialize session state
 if 'messages' not in st.session_state:
     st.session_state.messages = []
 if 'chat_agent' not in st.session_state:
-    st.session_state.chat_agent = ChatAgent()
+    try:
+        logger.info("Initializing ChatAgent...")
+        st.session_state.chat_agent = ChatAgent()
+        logger.info("ChatAgent initialized successfully")
+    except Exception as e:
+        logger.error(f"Failed to initialize ChatAgent: {str(e)}", exc_info=True)
+        st.error(f"Failed to initialize AI Assistant: {str(e)}")
+        st.stop()
 if 'show_settings' not in st.session_state:
     st.session_state.show_settings = False
 
@@ -106,5 +123,5 @@ if prompt := st.chat_input("What's on your mind?"):
                 else:
                     st.error(f"Error: {response.get('error', 'Unknown error occurred')}")
             except Exception as e:
-                logger.error(f"Error processing message: {str(e)}")
+                logger.error(f"Error processing message: {str(e)}", exc_info=True)
                 st.error("I apologize, but I encountered an error processing your message. Please try again.")

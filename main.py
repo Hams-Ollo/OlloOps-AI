@@ -61,6 +61,9 @@ logger = logging.getLogger(__name__)
 def setup_environment():
     """Setup the application environment"""
     try:
+        # Create logs directory if it doesn't exist
+        os.makedirs('logs', exist_ok=True)
+        
         # Load environment variables
         load_dotenv()
         
@@ -70,13 +73,10 @@ def setup_environment():
         if missing_vars:
             raise EnvironmentError(f"Missing required environment variables: {', '.join(missing_vars)}")
         
-        # Create logs directory if it doesn't exist
-        os.makedirs('logs', exist_ok=True)
-        
         logger.info("Environment setup completed successfully")
         return True
     except Exception as e:
-        logger.error(f"Environment setup failed: {str(e)}")
+        logger.error(f"Environment setup failed: {str(e)}", exc_info=True)
         return False
 
 def start_streamlit():
@@ -88,11 +88,13 @@ def start_streamlit():
             ['streamlit', 'run', streamlit_path, '--server.port', '8501'],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            text=True
+            text=True,
+            bufsize=1,
+            universal_newlines=True
         )
         return process
     except Exception as e:
-        logger.error(f"Failed to start Streamlit: {str(e)}")
+        logger.error(f"Failed to start Streamlit: {str(e)}", exc_info=True)
         return None
 
 def main():
@@ -123,13 +125,21 @@ def main():
             
             # Check if Streamlit process has ended
             if streamlit_process.poll() is not None:
+                if streamlit_process.returncode != 0:
+                    logger.error(f"Streamlit process ended with code {streamlit_process.returncode}")
                 break
+                
     except KeyboardInterrupt:
         logger.info("Shutting down application...")
+    except Exception as e:
+        logger.error(f"Unexpected error: {str(e)}", exc_info=True)
     finally:
         if streamlit_process:
             streamlit_process.terminate()
-            streamlit_process.wait()
+            try:
+                streamlit_process.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                streamlit_process.kill()
     
     logger.info("Application shutdown complete")
 

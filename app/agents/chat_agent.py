@@ -21,8 +21,19 @@ load_dotenv()
 class ChatAgent:
     def __init__(self):
         """Initialize the chat agent with Groq LLM"""
+        # Load environment variables
+        load_dotenv()
+        
+        # Get API key and model name from environment
+        self.api_key = os.getenv("GROQ_API_KEY")
+        if not self.api_key:
+            raise ValueError("GROQ_API_KEY environment variable is not set")
+            
         self.model = os.getenv("GROQ_MODEL", "llama3-groq-70b-8192-tool-use-preview")
         self.conversation_history = []
+        
+        # Create the LLM instance
+        self.llm = self.create_groq_llm()
         
         # Initialize CrewAI agents
         self.chat_agent = Agent(
@@ -33,7 +44,7 @@ class ChatAgent:
             responses, and maintaining engaging conversations.""",
             allow_delegation=True,
             verbose=True,
-            llm=self.create_groq_llm()
+            llm=self.llm
         )
         
         self.scheduling_agent = Agent(
@@ -43,7 +54,7 @@ class ChatAgent:
             organize their time effectively and manage their calendar.""",
             allow_delegation=True,
             verbose=True,
-            llm=self.create_groq_llm()
+            llm=self.llm
         )
         
         self.content_agent = Agent(
@@ -53,7 +64,7 @@ class ChatAgent:
             create engaging and effective content across different formats.""",
             allow_delegation=True,
             verbose=True,
-            llm=self.create_groq_llm()
+            llm=self.llm
         )
         
         # Initialize the crew
@@ -68,7 +79,7 @@ class ChatAgent:
         from langchain_groq import ChatGroq
         
         return ChatGroq(
-            groq_api_key=os.getenv("GROQ_API_KEY"),
+            groq_api_key=self.api_key,
             model_name=self.model,
             temperature=0.7,
             max_tokens=4096
@@ -80,9 +91,6 @@ class ChatAgent:
             # Add message to conversation history
             self.conversation_history.append({"role": "user", "content": message})
             
-            # Create LLM instance
-            llm = self.create_groq_llm()
-            
             # Prepare messages for chat
             messages = [
                 {"role": "system", "content": self.chat_agent.backstory},
@@ -90,10 +98,11 @@ class ChatAgent:
             ]
             
             # Generate response
-            response = llm.invoke(messages)
+            response = self.llm.invoke(messages)
+            response_content = response.content if hasattr(response, 'content') else str(response)
             
             # Add response to conversation history
-            self.conversation_history.append({"role": "assistant", "content": response})
+            self.conversation_history.append({"role": "assistant", "content": response_content})
             
             # Create and process any necessary tasks based on the message
             if self._requires_scheduling(message):
@@ -113,10 +122,10 @@ class ChatAgent:
             # Process any pending tasks
             if self.crew.tasks:
                 crew_result = self.crew.kickoff()
-                response += f"\n\nAdditional insights from the crew:\n{crew_result}"
+                response_content += f"\n\nAdditional insights from the crew:\n{crew_result}"
             
             return {
-                "response": response,
+                "response": response_content,
                 "success": True
             }
             
