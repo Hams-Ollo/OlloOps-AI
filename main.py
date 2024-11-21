@@ -75,13 +75,11 @@ import streamlit as st
 import os
 import logging
 from dotenv import load_dotenv
-from app.agents.chat_agent import ChatAgent
-from app.agents.document_processor import DocumentProcessor
 from datetime import datetime
 import pandas as pd
 import markdown
 from typing import Dict, List, Any, Optional
-from langchain.schema import Document
+
 
 # Load environment variables
 load_dotenv()
@@ -96,11 +94,7 @@ logger = logging.getLogger(__name__)
 
 #-------------------------------------------------------------------------------------#
 #----------# CONFIG  #----------#
-API_KEY = os.getenv("API_KEY")
-API_SECRET = os.getenv("API_SECRET")
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-OPENAI_API_BASE = os.getenv("OPENAI_API_BASE")
-OPENAI_API_TYPE = os.getenv("OPENAI_API_TYPE")
+
 
 
 #-------------------------------------------------------------------------------------#
