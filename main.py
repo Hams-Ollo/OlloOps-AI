@@ -3,6 +3,7 @@
 # Description: Main application entry point and process manager
 # Author: @hams_ollo
 # Version: 0.0.3
+# Last Updated: [2024-11-21]
 #-------------------------------------------------------------------------------------#
 # SETUP GUIDE:
 #
