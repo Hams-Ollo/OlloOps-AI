@@ -145,6 +145,33 @@
    streamlit create my_component
    ```
 
+## Agent System Architecture
+
+The application uses CrewAI to implement a multi-agent system with the following specialized agents:
+
+1. **Lead Conversational Agent** (`chat_agent.py`)
+   - Primary interface for user interactions
+   - Manages conversation flow and context
+   - Delegates tasks to specialized agents
+
+2. **Scheduling Agent** (`scheduling_agent.py`)
+   - Handles calendar and scheduling tasks
+   - Manages appointments and reminders
+   - Optimizes time management
+
+3. **Content Creation Agent** (`content_agent.py`)
+   - Generates and formats content
+   - Provides writing assistance
+   - Optimizes content for different platforms
+
+4. **Podcast Production Agent** (`podcast_agent.py`)
+   - Creates podcast scripts and outlines
+   - Manages episode planning
+   - Generates show notes and summaries
+   - Provides audio content recommendations
+
+Each agent is implemented as a separate module in the `app/agents/` directory and inherits from the CrewAI Agent class.
+
 ## Git Commands
 
 ### Basic Operations

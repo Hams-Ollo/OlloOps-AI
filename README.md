@@ -23,6 +23,7 @@ A Multi-Agent, Voice-Powered AI Assistant for Productivity, Podcasting, and Beyo
      - Lead Conversational Assistant
      - Scheduling Assistant
      - Content Creation Assistant
+     - Podcast Production Assistant
    - Dynamic task delegation based on agent expertise
    - Seamless inter-agent communication
 
@@ -142,7 +143,6 @@ hams_ollo_ai/
 │   │   ├── chat_agent.py
 │   │   ├── scheduling_agent.py
 │   │   └── content_agent.py
-│   └── utils/
 ├── frontend/
 │   └── streamlit.py
 ├── docs/

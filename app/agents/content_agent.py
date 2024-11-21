@@ -1,7 +1,13 @@
 #-------------------------------------------------------------------------------------#
 # File: content_agent.py
-# Description: Custom content agent implementation using Groq's Mixtral model for conversational AI
+# Description: Specialized agent for content creation and management
 # Author: @hams_ollo
+# 
+# This agent specializes in:
+# - Content generation and formatting
+# - Writing assistance and editing
+# - SEO optimization and keyword analysis
+# - Multi-format content adaptation
 #-------------------------------------------------------------------------------------#
 from crewai import Agent
 

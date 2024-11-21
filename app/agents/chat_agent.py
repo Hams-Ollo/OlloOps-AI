@@ -1,7 +1,13 @@
 #-------------------------------------------------------------------------------------#
 # File: chat_agent.py
-# Description: Custom chat agent implementation using Groq's Mixtral model for conversational AI
+# Description: Lead conversational agent implementation using CrewAI and Groq's Llama 3
 # Author: @hams_ollo
+# 
+# This agent serves as the primary interface for user interactions, managing:
+# - Conversation flow and context management
+# - Task delegation to specialized agents
+# - Response generation and formatting
+# - Memory management and conversation history
 #-------------------------------------------------------------------------------------#
 import os
 from typing import Dict, Any, List

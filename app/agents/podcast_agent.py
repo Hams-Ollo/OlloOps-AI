@@ -1,7 +1,14 @@
 #-------------------------------------------------------------------------------------#
 # File: podcast_agent.py
-# Description: Custom podcast agent implementation using Groq's Mixtral model for conversational AI
+# Description: Specialized agent for podcast content creation and management
 # Author: @hams_ollo
+# 
+# This agent specializes in:
+# - Podcast script generation and outline creation
+# - Topic research and content structuring
+# - Show notes and summary creation
+# - Episode planning and series management
+# - Audio content recommendations
 #-------------------------------------------------------------------------------------#
 from crewai import Agent
 

@@ -1,7 +1,13 @@
 #-------------------------------------------------------------------------------------#
 # File: scheduling_agent.py
-# Description: Custom scheduling agent implementation using Groq's Mixtral model for scheduling and time management
+# Description: Specialized agent for handling calendar and scheduling tasks
 # Author: @hams_ollo
+# 
+# This agent is responsible for:
+# - Managing calendar events and appointments
+# - Scheduling optimization and conflict resolution
+# - Time zone handling and availability checks
+# - Integration with calendar services
 #-------------------------------------------------------------------------------------#
 from crewai import Agent
 

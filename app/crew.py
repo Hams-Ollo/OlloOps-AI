@@ -1,3 +1,15 @@
+#-------------------------------------------------------------------------------------#
+# File: crew.py
+# Description: Core CrewAI implementation and agent orchestration
+# Author: @hams_ollo
+# 
+# This module manages:
+# - Agent initialization and configuration
+# - Inter-agent communication protocols
+# - Task delegation and workflow management
+# - Crew composition and dynamic team formation
+#-------------------------------------------------------------------------------------#
+
 from crewai import Crew, Process
 from typing import Dict, List, Any
 import yaml
