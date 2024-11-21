@@ -91,7 +91,7 @@ This project leverages the latest in AI and software development:
 
 1. **AI Frameworks**:
    - **OpenAI GPT-4**: Advanced natural language processing for multi-agent orchestration and conversation.
-   - **LangChain**: Multi-agent architecture for tool integration and dynamic workflows.
+   - **Crew AI**: Powerful multi-agent framework for orchestrating collaborative AI agents and dynamic workflows.
 
 2. **Voice Technologies**:
    - **Google TTS**, **ElevenLabs**: For natural, lifelike voice generation.
@@ -167,4 +167,3 @@ pip install -r requirements.txt
 
 ```bash
 streamlit run app.py
-```
