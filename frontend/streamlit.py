@@ -70,7 +70,7 @@ with st.sidebar:
             st.rerun()
 
 # Main chat interface
-st.subheader("Your AI Assistant")
+st.subheader("Dynamic AI Assistant")
 
 # Display chat messages
 for idx, message in enumerate(st.session_state.messages):
