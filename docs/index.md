@@ -21,7 +21,7 @@
 
 ## Documentation Structure
 
-```
+```curl
 docs/
 ├── index.md                # This file
 ├── getting_started.md      # Quick start guide
