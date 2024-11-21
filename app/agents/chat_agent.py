@@ -3,7 +3,7 @@
 # File: chat_agent.py
 # Description: Custom chat agent implementation using Groq's Mixtral model for conversational AI
 # Author: @hams_ollo
-#
+#-------------------------------------------------------------------------------------#
 # INITIAL SETUP:
 # 1. Create virtual environment:    python -m venv venv
 # 2. Activate virtual environment:
@@ -14,7 +14,4 @@
 # 5. Update dependencies:          pip freeze > requirements.txt
 #
 #-------------------------------------------------------------------------------------#
-#----------# IMPORTS  #----------#
-from typing import List, Dict, Any, Optional
-import logging
-import groq
+from crewai import Agent
