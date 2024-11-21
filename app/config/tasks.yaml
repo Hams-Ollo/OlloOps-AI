@@ -1,0 +1,50 @@
+conversation_tasks:
+  process_user_message:
+    description: "Process and respond to user messages"
+    agent: chat_agent
+    tools:
+      - voice_transcription
+      - knowledge_retrieval
+
+scheduling_tasks:
+  schedule_meeting:
+    description: "Schedule meetings and manage calendar"
+    agent: scheduling_agent
+    tools:
+      - calendar_management
+      - availability_checker
+
+  resolve_conflicts:
+    description: "Handle scheduling conflicts"
+    agent: scheduling_agent
+    tools:
+      - conflict_resolver
+
+content_tasks:
+  generate_social_content:
+    description: "Create platform-specific social media content"
+    agent: content_agent
+    tools:
+      - content_generator
+      - social_media_formatter
+
+  create_blog_post:
+    description: "Generate SEO-optimized blog content"
+    agent: content_agent
+    tools:
+      - content_generator
+      - seo_optimizer
+
+podcast_tasks:
+  plan_episode:
+    description: "Plan and outline podcast episodes"
+    agent: podcast_agent
+    tools:
+      - episode_planner
+      - discussion_generator
+
+  create_show_notes:
+    description: "Generate comprehensive show notes"
+    agent: podcast_agent
+    tools:
+      - show_notes_creator
