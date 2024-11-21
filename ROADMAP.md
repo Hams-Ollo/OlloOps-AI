@@ -16,18 +16,18 @@ To propose a new feature or enhancement, copy the template below and submit a pu
 - **Dependencies**: [List any dependencies]
 - **Contributors**: [@username]
 
-#### Description
+### Feature Proposal: Description
 Brief description of the feature
 
-#### Technical Requirements
+### Feature Proposal: Technical Requirements
 - Requirement 1
 - Requirement 2
 
-#### Success Criteria
+### Feature Proposal: Success Criteria
 - [ ] Criterion 1
 - [ ] Criterion 2
 
-#### Resources
+### Feature Proposal: Resources
 - Links to relevant documentation
 - Reference implementations
 ```
@@ -44,11 +44,11 @@ Brief description of the feature
 - **Dependencies**: ChromaDB, LangChain
 - **Contributors**: [@hams_ollo]
 
-#### Description
+### Phase 1: Description
 
 Implement a robust knowledge management system using ChromaDB for vector storage and RAG capabilities.
 
-#### Technical Requirements
+### Phase 1: Technical Requirements
 
 1. **Directory Structure**:
 
@@ -67,7 +67,7 @@ app/
 │       └── query_builder.py
 ```
 
-2. **Core Components**:
+1. **Core Components**:
 
 - ChromaDB client setup
 - Document processing pipeline
@@ -75,7 +75,7 @@ app/
 - RAG query system
 - Streamlit upload interface
 
-3. **Dependencies**:
+1. **Dependencies**:
 
 ```curl
 chromadb==0.4.22
@@ -84,7 +84,7 @@ python-docx==1.0.1
 PyPDF2==3.0.1
 ```
 
-#### Success Criteria
+### Phase 1: Success Criteria
 
 - [ ] Document upload workflow implemented
 - [ ] Vector storage system operational
@@ -101,11 +101,11 @@ PyPDF2==3.0.1
 - **Dependencies**: ElevenLabs API
 - **Contributors**: [@hams_ollo]
 
-#### Description
+### Phase 2: Description
 
 Integration of ElevenLabs voice capabilities for natural voice interaction.
 
-#### Technical Requirements
+### Phase 2: Technical Requirements
 
 1. **Directory Structure**:
 
@@ -121,7 +121,7 @@ app/
 │       └── stt_manager.py
 ```
 
-2. **Core Components**:
+1. **Core Components**:
 
 - ElevenLabs API client
 - Voice profile management
@@ -129,14 +129,14 @@ app/
 - Speech-to-text pipeline
 - Text-to-speech pipeline
 
-3. **Dependencies**:
+1. **Dependencies**:
 
 ```curl
 elevenlabs==0.2.27
 pydub==0.25.1
 ```
 
-#### Success Criteria
+### Phase 2: Success Criteria
 
 - [ ] Voice synthesis operational
 - [ ] Real-time audio streaming implemented
@@ -154,14 +154,12 @@ pydub==0.25.1
 - **Dependencies**: None
 - **Target Release**: v0.7.0
 
-#### Technical Requirements
+### Security: Technical Requirements
 
 - Document access control
 - API key management
 - Data encryption at rest
 - User authentication system
-
----
 
 ### Performance Optimization (v0.8.0)
 
@@ -170,14 +168,12 @@ pydub==0.25.1
 - **Dependencies**: None
 - **Target Release**: v0.8.0
 
-#### Technical Requirements
+### Performance: Technical Requirements
 
 - Batch processing
 - Caching system
 - Database sharding
 - Resource usage optimization
-
----
 
 ## 📊 Monitoring & Analytics (v0.9.0)
 
@@ -186,7 +182,7 @@ pydub==0.25.1
 - **Dependencies**: None
 - **Target Release**: v0.9.0
 
-#### Technical Requirements
+### Monitoring: Technical Requirements
 
 - System health metrics
 - API usage tracking
@@ -205,19 +201,19 @@ pydub==0.25.1
 - **Dependencies**: [List any dependencies]
 - **Contributors**: [@your_username]
 
-#### Description
+### Feature Proposal: Description
 
 [Provide a clear, concise description of your proposed feature]
 
-#### Technical Requirements
+### Feature Proposal: Technical Requirements
 
 - [List technical requirements]
 
-#### Success Criteria
+### Feature Proposal: Success Criteria
 
 - [ ] [List measurable success criteria]
 
-#### Resources
+### Feature Proposal: Resources
 
 - [Add any relevant links or resources]
 
@@ -269,7 +265,7 @@ pydub==0.25.1
 This roadmap is updated:
 
 1. At the start of each sprint
-2. When major features are completed
-3. When community proposals are accepted
+1. When major features are completed
+1. When community proposals are accepted
 
 Last Updated: [2024-11-21]
