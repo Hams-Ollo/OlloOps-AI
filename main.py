@@ -2,6 +2,7 @@
 # File: main.py
 # Description: Main application entry point and process manager
 # Author: @hams_ollo
+# Version: 0.0.3
 #-------------------------------------------------------------------------------------#
 # SETUP GUIDE:
 #
