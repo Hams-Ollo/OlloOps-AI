@@ -13,7 +13,7 @@ import os
 from typing import Dict, Any, List
 from crewai import Agent, Task, Crew
 from dotenv import load_dotenv
-import groq
+from langchain_groq import ChatGroq
 
 # Load environment variables
 load_dotenv()
@@ -21,7 +21,6 @@ load_dotenv()
 class ChatAgent:
     def __init__(self):
         """Initialize the chat agent with Groq LLM"""
-        self.groq_client = groq.Groq(api_key=os.getenv("GROQ_API_KEY"))
         self.model = os.getenv("GROQ_MODEL", "llama3-groq-70b-8192-tool-use-preview")
         self.conversation_history = []
         
@@ -66,12 +65,14 @@ class ChatAgent:
 
     def create_groq_llm(self):
         """Create a Groq LLM configuration for the agent"""
-        return {
-            "model": self.model,
-            "temperature": 0.7,
-            "max_tokens": 4096,
-            "client": self.groq_client
-        }
+        from langchain_groq import ChatGroq
+        
+        return ChatGroq(
+            groq_api_key=os.getenv("GROQ_API_KEY"),
+            model_name=self.model,
+            temperature=0.7,
+            max_tokens=4096
+        )
 
     def process_message(self, message: str, context: Dict[str, Any] = None) -> Dict[str, Any]:
         """Process a user message and return a response"""
@@ -79,21 +80,17 @@ class ChatAgent:
             # Add message to conversation history
             self.conversation_history.append({"role": "user", "content": message})
             
-            # Prepare the conversation context
-            system_prompt = self.chat_agent.backstory
+            # Create LLM instance
+            llm = self.create_groq_llm()
             
-            # Create the chat completion with conversation history
-            completion = self.groq_client.chat.completions.create(
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    *self.conversation_history[-10:]  # Include last 10 messages for context
-                ],
-                model=self.model,
-                temperature=0.7,
-                max_tokens=4096
-            )
+            # Prepare messages for chat
+            messages = [
+                {"role": "system", "content": self.chat_agent.backstory},
+                *self.conversation_history[-10:]  # Include last 10 messages for context
+            ]
             
-            response = completion.choices[0].message.content
+            # Generate response
+            response = llm.invoke(messages)
             
             # Add response to conversation history
             self.conversation_history.append({"role": "assistant", "content": response})

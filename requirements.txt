@@ -7,6 +7,7 @@ python-dotenv>=1.0.0
 langchain-core>=0.1.7
 langchain-community>=0.0.10
 langchain-huggingface>=0.0.6
+langchain-groq>=0.1.4
 groq>=0.4.2
 tiktoken>=0.5.1
 
