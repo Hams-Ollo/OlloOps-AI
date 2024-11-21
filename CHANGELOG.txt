@@ -6,6 +6,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2024-03-19
+### Added
+- Integrated CrewAI framework for multi-agent orchestration
+- Added specialized agents for different tasks:
+  * Lead Conversational Assistant
+  * Scheduling Assistant
+  * Content Creation Assistant
+- Implemented conversation memory system
+- Enhanced Streamlit UI with new features:
+  * Settings sidebar with temperature and max tokens controls
+  * Chat history management
+  * Feedback system with thumbs up/down buttons
+  * User feedback collection for improvements
+- Added task delegation system based on message content
+- Implemented methods to detect and route specialized tasks
+
+### Changed
+- Refactored ChatAgent class to support CrewAI integration
+- Enhanced message processing with conversation history
+- Improved error handling and user feedback in Streamlit interface
+- Updated UI layout for better user experience
+- Modified agent initialization to support task delegation
+
+### Technical
+- Added support for maintaining conversation context
+- Implemented task-based agent delegation
+- Enhanced error handling and logging
+- Added user feedback collection mechanism
+- Improved session state management in Streamlit
+
 ## [0.3.0] - 2024-03-19
 ### Changed
 - Migrated from OpenAI to Groq for LLM functionality
