@@ -140,7 +140,6 @@ By contributing to **🪶 hams_ollo & AI 🤖**, you’ll be part of a project t
 ```bash
 git clone https://github.com/Hams-Ollo/hams_ollo_ai.git
 cd hams_ollo_ai
-'''
 
 ### Install Dependencies
 
@@ -150,13 +149,8 @@ source venv/bin/activate  # For Unix/MacOS
 .\venv\Scripts\activate   # For Windows
 
 pip install -r requirements.txt
-'''
 
 ### Run the Application
 
 '''bash
 streamlit run app.py
-'''
-
-
-
