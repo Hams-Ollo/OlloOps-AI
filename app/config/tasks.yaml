@@ -1,50 +1,123 @@
-conversation_tasks:
-  process_user_message:
-    description: "Process and respond to user messages"
-    agent: chat_agent
-    tools:
-      - voice_transcription
-      - knowledge_retrieval
+tasks:
+  # Conversation-related Tasks
+  conversation_tasks:
+    process_user_message:
+      description: >
+        Handle incoming user messages, process them through conversational flow,
+        and respond with context-aware, insightful, and relevant responses. This task
+        involves utilizing voice transcription and knowledge retrieval to provide personalized answers.
+      agent: chat_agent
+      tools:
+        - voice_transcription
+        - knowledge_retrieval
+        - sentiment_analysis  # Added for better emotional context handling
 
-scheduling_tasks:
-  schedule_meeting:
-    description: "Schedule meetings and manage calendar"
-    agent: scheduling_agent
-    tools:
-      - calendar_management
-      - availability_checker
+    maintain_conversation_memory:
+      description: >
+        Track and manage conversation history, ensuring that the context is preserved
+        for more seamless and dynamic interactions throughout ongoing conversations.
+      agent: chat_agent
+      tools:
+        - memory_manager  # New tool for storing and accessing conversation history
+        - context_saver
 
-  resolve_conflicts:
-    description: "Handle scheduling conflicts"
-    agent: scheduling_agent
-    tools:
-      - conflict_resolver
+  # Scheduling-related Tasks
+  scheduling_tasks:
+    schedule_meeting:
+      description: >
+        Assist in scheduling meetings, making sure to optimize time and availability
+        based on user preferences and team members' calendars. Provides an efficient
+        way to streamline calendar management for personal and professional activities.
+      agent: scheduling_agent
+      tools:
+        - calendar_management
+        - availability_checker
+        - task_prioritizer  # Prioritize meeting times based on urgency and importance
 
-content_tasks:
-  generate_social_content:
-    description: "Create platform-specific social media content"
-    agent: content_agent
-    tools:
-      - content_generator
-      - social_media_formatter
+    resolve_conflicts:
+      description: >
+        Identify and resolve scheduling conflicts by proposing alternative time slots
+        or notifying involved parties to find the best compromise, ensuring smooth scheduling.
+      agent: scheduling_agent
+      tools:
+        - conflict_resolver
+        - scheduling_advisor  # Additional tool for suggesting optimal solutions
 
-  create_blog_post:
-    description: "Generate SEO-optimized blog content"
-    agent: content_agent
-    tools:
-      - content_generator
-      - seo_optimizer
+    set_reminder_for_meeting:
+      description: >
+        Set automated reminders for upcoming meetings, events, or tasks, ensuring the
+        user stays organized and on track. The reminder should be context-aware.
+      agent: scheduling_agent
+      tools:
+        - reminder_manager  # A new tool to ensure timely reminders
 
-podcast_tasks:
-  plan_episode:
-    description: "Plan and outline podcast episodes"
-    agent: podcast_agent
-    tools:
-      - episode_planner
-      - discussion_generator
+  # Content-related Tasks
+  content_tasks:
+    generate_social_content:
+      description: >
+        Create engaging and tailored social media posts for different platforms,
+        ensuring alignment with @hams_ollo’s tone, messaging, and audience engagement strategies.
+        This includes image generation, captions, and hashtags.
+      agent: content_agent
+      tools:
+        - content_generator
+        - social_media_formatter
+        - image_generation_tool  # New tool for generating relevant visuals for posts
 
-  create_show_notes:
-    description: "Generate comprehensive show notes"
-    agent: podcast_agent
-    tools:
-      - show_notes_creator
+    create_blog_post:
+      description: >
+        Write in-depth, SEO-optimized blog posts based on user inputs, relevant research, and @hams_ollo's core themes.
+        This includes content structure, keyword optimization, and readability improvements.
+      agent: content_agent
+      tools:
+        - content_generator
+        - seo_optimizer
+        - readability_analyzer  # Additional tool to ensure high-quality blog writing
+
+    optimize_existing_content:
+      description: >
+        Review and enhance existing content (e.g., blog posts, social media posts) by improving SEO,
+        readability, and engagement. This task aims to refine content for higher visibility and effectiveness.
+      agent: content_agent
+      tools:
+        - seo_optimizer
+        - content_refinement_tool  # A new tool for content revision
+
+  # Podcast-related Tasks
+  podcast_tasks:
+    plan_episode:
+      description: >
+        Plan and outline podcast episodes, including topic research, episode structure, and key points.
+        Ensure the episode aligns with @hams_ollo’s vision of blending history, technology, and spirituality.
+      agent: podcast_agent
+      tools:
+        - episode_planner
+        - discussion_generator
+        - topic_research_tool  # New tool to assist in gathering relevant ideas for podcast topics
+
+    create_show_notes:
+      description: >
+        Generate comprehensive, organized, and well-structured show notes for each podcast episode,
+        including timestamps, key takeaways, and relevant links. The notes should be optimized for SEO and clarity.
+      agent: podcast_agent
+      tools:
+        - show_notes_creator
+        - seo_optimizer  # Ensuring that the show notes are discoverable and useful
+
+    edit_podcast_audio:
+      description: >
+        Edit podcast audio to ensure professional sound quality, cutting out any unnecessary pauses, mistakes, or distractions.
+        Apply effects and equalization to create a polished final product.
+      agent: podcast_agent
+      tools:
+        - audio_editor  # New tool to improve podcast production
+
+    promote_podcast_episode:
+      description: >
+        Develop a strategy for promoting new podcast episodes across different platforms, creating shareable content, teasers,
+        and utilizing social media and email marketing to increase reach and listener engagement.
+      agent: podcast_agent
+      tools:
+        - social_media_formatter
+        - promotional_material_generator  # New tool for creating marketing materials (teasers, banners, etc.)
+
